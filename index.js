@@ -9,7 +9,12 @@ var app = express();
 //setup server port
 var port = process.env.PORT || 8080;
 
-
+app.use(function(req, res, next){
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    console.log(res);
+    res.status(200);
+    next();
+});
 //configure bodyparser to handle post request
 app.use(bodyParser.urlencoded({
     extended: true
